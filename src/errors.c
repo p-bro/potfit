@@ -173,13 +173,13 @@ void write_errors(double* force, double tot)
 #if defined(STRESS)
     if (g_param.sweight != 0)
       fprintf(outfile, "stress \t%e\t(%f MPa)\n", rms[2],
-              rms[2] / 160.2 * 1000);
+              rms[2] * 160.2 * 1000);
 #endif  // STRESS
     fprintf(outfile, "\n");
     fprintf(outfile,
             "\tforce [meV/A]\tenergy [meV]\tstress [MPa]\terror sum\n");
     fprintf(outfile, "RMS:\t%e\t%e\t%e\t%f\n", rms[0] * 1000, rms[1] * 1000,
-            rms[2] / 160.2 * 1000, tot);
+            rms[2] * 160.2 * 1000, tot);
   }
 
   printf("sum of force-errors  = %e\t\t( %.3f%% - av: %e)\n", f_sum,
@@ -208,7 +208,7 @@ void write_errors(double* force, double tot)
     printf("energy \t%e\t(%f meV)\n", rms[1], rms[1] * 1000);
 #if defined(STRESS)
   if (g_param.sweight != 0)
-    printf("stress \t%e\t(%f MPa)\n", rms[2], rms[2] / 160.2 * 1000);
+    printf("stress \t%e\t(%f MPa)\n", rms[2], rms[2] * 160.2 * 1000);
 #endif  // STRESS
   if (g_param.write_output_files)
     fclose(outfile);
